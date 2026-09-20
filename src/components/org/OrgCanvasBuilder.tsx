@@ -259,7 +259,7 @@ export const OrgCanvasBuilder: React.FC<OrgCanvasBuilderProps> = ({
   return (
     <div
       ref={frameRef}
-      className="relative w-full h-full overflow-hidden touch-none select-none bg-[#F6F3EC] dark:bg-[#14201F]"
+      className="relative w-full h-full min-h-[550px] overflow-hidden touch-none select-none bg-[#F6F3EC] dark:bg-[#14201F]"
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}

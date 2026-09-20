@@ -16,7 +16,7 @@ export const HORIZONTAL_GAP = 48;
 export const VERTICAL_GAP = 80;
 
 function isValidCoordinate(val: any): boolean {
-  return typeof val === 'number' && !isNaN(val) && val >= 10;
+  return typeof val === 'number' && !isNaN(val) && val >= 10 && val <= 3500;
 }
 
 /**
