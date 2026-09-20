@@ -64,56 +64,26 @@ export default function App() {
   const [isKioskMode, setIsKioskMode] = useState(false);
   const [isOnboardingOpen, setIsOnboardingOpen] = useState(false);
 
-  // App Main State with localStorage persistence
-  const [company, setCompany] = useState<Company>(() => {
-    const saved = localStorage.getItem('aluvantis_company');
-    return saved ? JSON.parse(saved) : INITIAL_COMPANY;
-  });
+  // App Main State with safe localStorage persistence
+  const safeStorageGet = <T,>(key: string, fallback: T): T => {
+    try {
+      const saved = localStorage.getItem(key);
+      return saved ? JSON.parse(saved) : fallback;
+    } catch {
+      return fallback;
+    }
+  };
 
-  const [currentUser, setCurrentUser] = useState<User>(() => {
-    const saved = localStorage.getItem('aluvantis_user');
-    return saved ? JSON.parse(saved) : INITIAL_USERS[0];
-  });
-
-  const [employees, setEmployees] = useState<Employee[]>(() => {
-    const saved = localStorage.getItem('aluvantis_employees');
-    return saved ? JSON.parse(saved) : INITIAL_EMPLOYEES;
-  });
-
-  const [shifts, setShifts] = useState<Shift[]>(() => {
-    const saved = localStorage.getItem('aluvantis_shifts');
-    return saved ? JSON.parse(saved) : INITIAL_SHIFTS;
-  });
-
-  const [attendance, setAttendance] = useState<AttendanceRecord[]>(() => {
-    const saved = localStorage.getItem('aluvantis_attendance');
-    return saved ? JSON.parse(saved) : INITIAL_ATTENDANCE;
-  });
-
-  const [leaves, setLeaves] = useState<LeaveRequest[]>(() => {
-    const saved = localStorage.getItem('aluvantis_leaves');
-    return saved ? JSON.parse(saved) : INITIAL_LEAVES;
-  });
-
-  const [leaveBalances, setLeaveBalances] = useState<LeaveBalance[]>(() => {
-    const saved = localStorage.getItem('aluvantis_leave_balances');
-    return saved ? JSON.parse(saved) : INITIAL_LEAVE_BALANCES;
-  });
-
-  const [payroll, setPayroll] = useState<PayrollRecord[]>(() => {
-    const saved = localStorage.getItem('aluvantis_payroll');
-    return saved ? JSON.parse(saved) : INITIAL_PAYROLL;
-  });
-
-  const [documents, setDocuments] = useState<HRDocument[]>(() => {
-    const saved = localStorage.getItem('aluvantis_documents');
-    return saved ? JSON.parse(saved) : INITIAL_DOCUMENTS;
-  });
-
-  const [auditLogs, setAuditLogs] = useState<AuditLog[]>(() => {
-    const saved = localStorage.getItem('aluvantis_audit_logs');
-    return saved ? JSON.parse(saved) : INITIAL_AUDIT_LOGS;
-  });
+  const [company, setCompany] = useState<Company>(() => safeStorageGet('aluvantis_company', INITIAL_COMPANY));
+  const [currentUser, setCurrentUser] = useState<User>(() => safeStorageGet('aluvantis_user', INITIAL_USERS[0]));
+  const [employees, setEmployees] = useState<Employee[]>(() => safeStorageGet('aluvantis_employees', INITIAL_EMPLOYEES));
+  const [shifts, setShifts] = useState<Shift[]>(() => safeStorageGet('aluvantis_shifts', INITIAL_SHIFTS));
+  const [attendance, setAttendance] = useState<AttendanceRecord[]>(() => safeStorageGet('aluvantis_attendance', INITIAL_ATTENDANCE));
+  const [leaves, setLeaves] = useState<LeaveRequest[]>(() => safeStorageGet('aluvantis_leaves', INITIAL_LEAVES));
+  const [leaveBalances, setLeaveBalances] = useState<LeaveBalance[]>(() => safeStorageGet('aluvantis_leave_balances', INITIAL_LEAVE_BALANCES));
+  const [payroll, setPayroll] = useState<PayrollRecord[]>(() => safeStorageGet('aluvantis_payroll', INITIAL_PAYROLL));
+  const [documents, setDocuments] = useState<HRDocument[]>(() => safeStorageGet('aluvantis_documents', INITIAL_DOCUMENTS));
+  const [auditLogs, setAuditLogs] = useState<AuditLog[]>(() => safeStorageGet('aluvantis_audit_logs', INITIAL_AUDIT_LOGS));
 
   // Responsive device type tracker
   const [deviceType, setDeviceType] = useState<string>('desktop');
