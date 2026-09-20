@@ -215,18 +215,32 @@ export const OrgCanvasBuilder: React.FC<OrgCanvasBuilderProps> = ({
   };
 
   // Toolbar Fit to Screen Handler
-  const handleFitToScreen = () => {
+  const handleFitToScreen = useCallback(() => {
     if (!frameRef.current || nodesRef.current.length === 0) return;
     const r = frameRef.current.getBoundingClientRect();
+    if (r.width < 100 || r.height < 100) return;
+
     const bbox = computeBoundingBox(nodesRef.current);
     const padding = 40;
     const scaleX = (r.width - padding * 2) / Math.max(1, bbox.width);
     const scaleY = (r.height - padding * 2) / Math.max(1, bbox.height);
-    const fitZoom = Math.min(2.6, Math.max(0.25, Math.min(scaleX, scaleY)));
+    const fitZoom = Math.min(1.4, Math.max(0.4, Math.min(scaleX, scaleY)));
     const fitX = Math.round((r.width - bbox.width * fitZoom) / 2 - bbox.minX * fitZoom);
-    const fitY = Math.round((r.height - bbox.height * fitZoom) / 2 - bbox.minY * fitZoom);
-    setV({ x: fitX, y: fitY, z: fitZoom });
-  };
+    const fitY = Math.max(30, Math.round((r.height - bbox.height * fitZoom) / 3));
+    setV({ x: fitX, y: fitY, z: Number(fitZoom.toFixed(2)) });
+  }, []);
+
+  // Auto-center nodes on initial mount
+  const hasCentered = useRef(false);
+  useEffect(() => {
+    if (!hasCentered.current) {
+      hasCentered.current = true;
+      const timer = setTimeout(() => {
+        handleFitToScreen();
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [handleFitToScreen]);
 
   // Toolbar Reset Handler
   const handleReset = () => {
