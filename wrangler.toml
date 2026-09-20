@@ -1,0 +1,49 @@
+name = "aluvantis-hr"
+main = "server/worker.ts"
+compatibility_date = "2026-09-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Static Assets for Vite SPA (Cloudflare Pages or Workers Assets)
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+
+# Cloudflare D1 Relational Database
+[[d1_databases]]
+binding = "DB"
+database_name = "aluvantis-hr-db"
+database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" # replace with wrangler d1 create output
+migrations_dir = "migrations"
+
+# Cloudflare KV Namespaces
+# Hot Layer: SESSIONS, CACHE, RATELIMIT
+[[kv_namespaces]]
+binding = "SESSIONS"
+id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+[[kv_namespaces]]
+binding = "CACHE"
+id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+[[kv_namespaces]]
+binding = "RATELIMIT"
+id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# Cloudflare R2 Bucket for Blobs (Avatars, Payslip PDFs, Contracts, Logos)
+[[r2_buckets]]
+binding = "FILES"
+bucket_name = "aluvantis-hr-files"
+
+# Environment Variables & Secrets:
+# Set via `wrangler secret put <KEY>`:
+# - GOOGLE_CLIENT_ID
+# - GOOGLE_CLIENT_SECRET
+# - GOOGLE_REDIRECT_URI
+# - JWT_SECRET
+# - TELEGRAM_BOT_TOKEN (Phase 2)
+[vars]
+ENVIRONMENT = "production"
+APP_NAME = "Aluvantis HR"
+AUTH_REDIRECT_BASE = "https://aluvantis.uz"
+JWT_EXPIRATION_SECONDS = 900 # 15 minutes
+SESSION_TTL_SECONDS = 604800 # 7 days

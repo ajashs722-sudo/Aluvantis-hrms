@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="150" viewBox="0 0 300 150">
+      <defs>
+        <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+          <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#14201F" flood-opacity="0.18"/>
+        </filter>
+      </defs>
+      <g filter="url(#shadow)">
+        <!-- Outer White Die-Cut Border -->
+        <rect x="10" y="10" width="280" height="130" rx="28" fill="#FFFFFF" stroke="#F6F3EC" stroke-width="4"/>
+        <!-- Inner Teal Fill -->
+        <rect x="18" y="18" width="264" height="114" rx="22" fill="#0E4F4F"/>
+        <!-- Accent Gold Strip -->
+        <path d="M 24 24 L 276 24" stroke="#C6A15B" stroke-width="4" stroke-linecap="round"/>
+        <!-- Sticker Text -->
+        <text x="150" y="83" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="26" fill="#F6F3EC" text-anchor="middle" letter-spacing="-0.5">0 server!</text>
+      </g>
+    </svg>

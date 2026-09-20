@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+      <rect width="1200" height="630" fill="#0E4F4F"/>
+      <!-- Background subtle grid -->
+      <path d="M 0 100 L 1200 100 M 0 200 L 1200 200 M 0 300 L 1200 300 M 0 400 L 1200 400 M 0 500 L 1200 500" stroke="#FFFFFF" stroke-opacity="0.04" stroke-width="1"/>
+      <path d="M 200 0 L 200 630 M 400 0 L 400 630 M 600 0 L 600 630 M 800 0 L 800 630 M 1000 0 L 1000 630" stroke="#FFFFFF" stroke-opacity="0.04" stroke-width="1"/>
+      <!-- Gold Angular A Mark -->
+      <g transform="translate(100, 210)">
+        <path d="M 0 160 L 80 0 L 160 160 L 115 160 L 80 80 L 45 160 Z" fill="#C6A15B"/>
+        <rect x="40" y="110" width="80" height="18" rx="4" fill="#F6F3EC"/>
+      </g>
+      <!-- Wordmark -->
+      <text x="300" y="280" font-family="system-ui, sans-serif" font-weight="800" font-size="72" fill="#F6F3EC" letter-spacing="-1">Aluvantis <tspan fill="#C6A15B">HR</tspan></text>
+      <text x="300" y="340" font-family="system-ui, sans-serif" font-weight="500" font-size="32" fill="#F6F3EC" opacity="0.9">Jamoangiz — bir oqshomda tartibda.</text>
+      <!-- Footer Badge -->
+      <rect x="300" y="385" width="420" height="48" rx="24" fill="#C6A15B" fill-opacity="0.2" stroke="#C6A15B" stroke-width="1"/>
+      <text x="510" y="417" font-family="system-ui, sans-serif" font-weight="700" font-size="20" fill="#C6A15B" text-anchor="middle">O‘zbekiston korxonalari uchun HRMS</text>
+    </svg>

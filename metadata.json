@@ -1,0 +1,6 @@
+{
+  "name": "Aluvantis HR",
+  "description": "Enterprise HRMS for Uzbekistan with attendance, shifts, leaves, payroll (JShDS & INPS tax calculations), documents, analytics, and offline-first PWA sync.",
+  "requestFramePermissions": ["camera", "geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
