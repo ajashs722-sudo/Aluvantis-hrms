@@ -63,15 +63,7 @@ export const OrgCanvasNode: React.FC<OrgCanvasNodeProps> = ({
     <div
       data-canvas-node="true"
       id={`org-node-${node.id}`}
-      style={{
-        position: 'absolute',
-        left: `${node.x}px`,
-        top: `${node.y}px`,
-        width: `${NODE_WIDTH}px`,
-        touchAction: 'none',
-      }}
-      onPointerDown={(e) => onPointerDownNode(e, node.id)}
-      className={`rounded-2xl select-none transition-[shadow,border-color,background-color] duration-150 group z-10 flex flex-col border ${
+      className={`w-full relative rounded-2xl select-none transition-[shadow,border-color,background-color] duration-150 group z-10 flex flex-col border ${
         isDragging
           ? 'shadow-2xl ring-2 ring-[#C6A15B] cursor-grabbing opacity-95 bg-[#FAF8F5] dark:bg-[#182726]'
           : 'shadow-md hover:shadow-xl bg-[#FAF8F5] dark:bg-[#182726] border-border/80 hover:border-[#C6A15B]/50 cursor-grab'
