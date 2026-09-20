@@ -276,9 +276,7 @@ export const OrgCanvasBuilder: React.FC<OrgCanvasBuilderProps> = ({
         />
 
         {/* SVG Connectors (World Coordinates) */}
-        <svg className="absolute overflow-visible pointer-events-none" width="1" height="1">
-          <OrgCanvasConnections nodes={nodes} />
-        </svg>
+        <OrgCanvasConnections nodes={nodes} />
 
         {/* Department Node Cards */}
         {nodes.map((n) => {
